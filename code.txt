@@ -1,0 +1,71 @@
+# Welcome to Sonic Pi
+define :func1 do
+  play :a, release: 0.2
+  sleep 0.2
+  play :c, release: 0.2
+  sleep 0.2
+  play :d, release: 0.2
+  sleep 0.2
+  play :e, release: 0.2
+  sleep 0.2
+  play :f, release: 0.2
+  sleep 0.2
+  play :g, release: 0.2
+  sleep 0.2
+end
+
+define :f2 do
+  play 65,release:0.2
+  sleep 0.4
+  3.times do
+    play 60,release:0.1
+    sleep 0.2
+  end
+  sleep 0.2
+  play 65,release:0.2
+  sleep 0.4
+end
+
+sleep 0.5
+x=1
+live_loop :a do
+  sample :ambi_piano
+  sleep 1.6
+  stop if x==0
+end
+7.times do
+  f2
+end
+sleep 1.4
+x=0
+sample  :vinyl_rewind
+sleep 2
+
+11.times do
+  sample "/Users/haghighy/Desktop/neg/sonic pi/Sonic Pi Workshop Files/Samples/bruh.wav"
+  sleep 0.08
+end
+5.times do
+  sample "/Users/haghighy/Desktop/neg/sonic pi/Sonic Pi Workshop Files/Samples/hihat.wav"
+  sleep 0.3
+end
+b=1
+live_loop :b do
+  sample :bd_haus if (spread 1, 4).tick
+  sample :elec_bong if (spread 3, 8).look
+  stop if b==0
+  sleep 0.15
+end
+sleep 12
+b=0
+c=1
+live_loop :c do
+  sample :bd_haus if (spread 1, 4).tick
+  sample :elec_bong if (spread 3, 8).look
+  stop if c==0
+  sleep 0.1
+end
+sleep 8
+c=0
+sample :bd_haus if (spread 1, 4).tick
+sample :elec_bong if (spread 3, 8).look
